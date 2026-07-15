@@ -2,13 +2,10 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-import GlassCard from "./ui/GlassCard";
-import Button from "./ui/Button";
 import Reveal from "./Reveal";
 
 
-export default function Hero() {
+export default function Hero(){
 
 
 return (
@@ -22,10 +19,16 @@ min-h-screen
 flex
 items-center
 justify-center
-
 px-6
-pt-32
+"
 
+>
+
+
+<div
+
+className="
+container
 "
 
 >
@@ -34,76 +37,56 @@ pt-32
 <Reveal>
 
 
-<GlassCard
-
-className="
-max-w-5xl
-w-full
-
-p-8
-md:p-14
-
-text-center
-
-"
-
->
-
-
 <motion.div
 
 initial={{
 opacity:0,
-scale:.9
+y:40
 }}
 
 animate={{
 opacity:1,
-scale:1
+y:0
 }}
 
 transition={{
 duration:.7
 }}
 
+className="
+max-w-4xl
+mx-auto
+text-center
+glass
+p-8
+md:p-12
+"
+
 >
 
 
-{/* Logo */}
+
+{/* Profile */}
 
 <motion.div
 
-animate={{
-y:[0,-10,0]
-}}
-
-transition={{
-duration:4,
-repeat:Infinity
+whileHover={{
+scale:1.05
 }}
 
 className="
+w-24
+h-24
 mx-auto
-mb-8
-
-w-28
-h-28
-
 rounded-full
-
 flex
 items-center
 justify-center
-
-text-5xl
+bg-[#DFF6F0]
+text-[#2D9C8C]
+text-3xl
 font-black
-
-bg-[#6DD5C4]
-
-text-slate-900
-
-shadow-xl
-
+mb-8
 "
 
 >
@@ -119,29 +102,15 @@ MH
 <h1
 
 className="
-text-5xl
-md:text-7xl
-
+text-4xl
+md:text-5xl
 font-black
-
-text-slate-900
-
 leading-tight
-
 "
 
 >
 
-Muhammad
-
-<span className="
-text-[#4FC8B3]
-">
-
- Husnain
-
-</span>
-
+Muhammad Husnain
 
 </h1>
 
@@ -152,28 +121,22 @@ text-[#4FC8B3]
 <h2
 
 className="
-mt-6
-
+mt-5
 text-xl
-md:text-3xl
-
+md:text-2xl
 font-bold
-
-text-slate-700
-
+text-[#2D9C8C]
 "
 
 >
 
-Security Operations
+Security System Operator
 
 <br/>
 
-<span className="
-text-[#0f766e]
-">
+<span className="text-slate-600">
 
-AI Technology × Web Development
+CCTV Specialist | AI Enthusiast | Web Developer
 
 </span>
 
@@ -184,29 +147,23 @@ AI Technology × Web Development
 
 
 
+
+
 <p
 
 className="
-max-w-3xl
-mx-auto
-
 mt-6
-
-text-lg
-
-text-slate-600
-
-leading-relaxed
-
+mx-auto
 "
 
 >
 
-Professional Security System Operator specializing in
-CCTV monitoring, security operations, reporting,
-automation solutions and modern web technologies.
+Professional Security System Operator with experience in
+CCTV monitoring, control room operations, incident reporting,
+AI solutions and modern web development technologies.
 
 </p>
+
 
 
 
@@ -216,41 +173,44 @@ automation solutions and modern web technologies.
 
 className="
 mt-10
-
 flex
 flex-col
 sm:flex-row
-
-gap-5
-
 justify-center
-
+gap-4
 "
 
 >
 
 
-<Link href="#resume">
+<Link
 
-<Button>
+href="/resume"
+
+className="
+btn-primary
+"
+
+>
 
 Download CV
-
-</Button>
 
 </Link>
 
 
 
 
+<Link
 
-<Link href="#projects">
+href="#projects"
 
-<Button variant="secondary">
+className="
+btn-secondary
+"
+
+>
 
 View Projects
-
-</Button>
 
 </Link>
 
@@ -261,17 +221,20 @@ View Projects
 
 
 
+
 </motion.div>
-
-
-</GlassCard>
 
 
 </Reveal>
 
 
+</div>
+
+
 </section>
 
-)
+
+);
+
 
 }

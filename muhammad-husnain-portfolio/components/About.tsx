@@ -1,33 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import Reveal from "./Reveal";
-import GlassCard from "./ui/GlassCard";
-import SectionTitle from "./ui/SectionTitle";
 
 
 const details = [
 
-  {
-    title: "Nationality",
-    value: "Pakistani"
-  },
+{
+title:"Professional Role",
+value:"Security System Operator | CCTV Specialist"
+},
 
-  {
-    title: "Languages",
-    value: "English, Urdu, Hindi"
-  },
+{
+title:"Technical Skills",
+value:"Next.js, TypeScript, Tailwind CSS & AI Tools"
+},
 
-  {
-    title: "Education",
-    value: "Professional & Technical Training"
-  },
+{
+title:"Certifications",
+value:"SIRA Security Certification & Professional Training"
+},
 
-  {
-    title: "Certification",
-    value: "SIRA Certified Security Professional"
-  }
+{
+title:"Experience",
+value:"Dubai Security Operations & Technology Projects"
+}
 
 ];
 
@@ -36,239 +33,251 @@ const details = [
 export default function About(){
 
 
-  return (
+return (
 
-    <section
+<section
 
-      id="about"
+id="about"
 
-      className="
-      px-6
-      py-24
-      "
+className="
+px-6
+"
 
-    >
+>
 
 
-      <div
+<div
 
-        className="
-        max-w-6xl
-        mx-auto
-        "
+className="
+container
+"
 
-      >
+>
 
 
-        <Reveal>
+<Reveal>
 
 
-          <SectionTitle
+<div
 
-            badge="ABOUT ME"
+className="
+grid
+lg:grid-cols-2
+gap-10
+items-center
+"
 
-            title="Security Professional With Technology Vision"
+>
 
-            description="
-            Security operations experience combined with AI,
-            automation and modern web development skills.
-            "
 
-          />
+{/* Left Content */}
 
+<motion.div
 
+initial={{
+opacity:0,
+x:-30
+}}
 
-          <div
+whileInView={{
+opacity:1,
+x:0
+}}
 
-            className="
-            grid
-            md:grid-cols-2
-            gap-10
-            items-center
-            "
+viewport={{
+once:true
+}}
 
-          >
+>
 
 
+<h2
 
-            {/* Introduction Card */}
+className="
+mb-6
+"
 
-            <GlassCard
+>
 
-              className="
-              p-8
-              md:p-10
-              "
+About Me
 
-            >
+</h2>
 
 
-              <motion.p
 
-                initial={{
-                  opacity:0,
-                  y:20
-                }}
+<p>
 
-                whileInView={{
-                  opacity:1,
-                  y:0
-                }}
+I am Muhammad Husnain, a professional Security System Operator
+with experience in CCTV monitoring, control room operations,
+security reporting and site management.
 
-                viewport={{
-                  once:true
-                }}
 
-                className="
-                text-lg
-                text-slate-600
-                leading-relaxed
-                "
+</p>
 
-              >
 
-                I am Muhammad Husnain, a professional Security System
-                Operator specializing in CCTV monitoring, control room
-                operations, security reporting and incident management.
+<p
 
+className="
+mt-5
+"
 
-                <br />
-                <br />
+>
 
+Along with security operations, I have developed strong interest
+and practical experience in modern web technologies. I build
+professional websites and AI-based solutions using Next.js,
+TypeScript, Tailwind CSS and modern development tools.
 
-                Alongside my security career, I have developed practical
-                skills in Web Development and modern technologies.
-                I work with HTML, CSS, JavaScript, React, Next.js and
-                modern UI frameworks to create responsive and
-                user-friendly web applications.
 
+</p>
 
-                <br />
-                <br />
 
+<p
 
-                My goal is to combine my security knowledge with
-                technology by exploring AI solutions, automation systems
-                and innovative digital platforms that improve efficiency,
-                safety and user experience.
+className="
+mt-5
+"
 
+>
 
-              </motion.p>
+My goal is to combine security expertise with technology
+to create smart, efficient and innovative solutions.
 
+</p>
 
-            </GlassCard>
 
 
+</motion.div>
 
 
 
-            {/* Details Cards */}
 
-            <div
 
-              className="
-              grid
-              sm:grid-cols-2
-              gap-6
-              "
+{/* Right Cards */}
 
-            >
 
+<div
 
-              {
-                details.map((item,index)=>(
+className="
+grid
+sm:grid-cols-2
+gap-5
+"
 
+>
 
-                  <GlassCard
 
-                    key={item.title}
+{
 
-                    className="
-                    p-6
-                    "
+details.map((item,index)=>(
 
-                  >
 
+<motion.div
 
-                    <motion.div
 
-                      initial={{
-                        opacity:0,
-                        y:20
-                      }}
+key={item.title}
 
-                      whileInView={{
-                        opacity:1,
-                        y:0
-                      }}
 
-                      viewport={{
-                        once:true
-                      }}
+initial={{
 
-                      transition={{
-                        duration:.4,
-                        delay:index * .1
-                      }}
+opacity:0,
 
-                    >
+y:30
 
+}}
 
-                      <h3
 
-                        className="
-                        text-xl
-                        font-bold
-                        text-slate-900
-                        "
+whileInView={{
 
-                      >
+opacity:1,
 
-                        {item.title}
+y:0
 
-                      </h3>
+}}
 
 
+viewport={{
 
-                      <p
+once:true
 
-                        className="
-                        mt-3
-                        text-slate-600
-                        "
+}}
 
-                      >
 
-                        {item.value}
+transition={{
 
-                      </p>
+delay:index*.1
 
+}}
 
-                    </motion.div>
 
+whileHover={{
 
-                  </GlassCard>
+y:-6
 
+}}
 
-                ))
-              }
 
+className="
+glass
+"
 
-            </div>
+>
 
 
+<h3
 
-          </div>
+className="
+text-lg
+font-bold
+"
 
+>
 
-        </Reveal>
+{item.title}
 
+</h3>
 
-      </div>
 
 
-    </section>
+<p
 
-  );
+className="
+mt-3
+text-sm
+"
+
+>
+
+{item.value}
+
+</p>
+
+
+
+</motion.div>
+
+
+))
+
+}
+
+
+</div>
+
+
+
+</div>
+
+
+</Reveal>
+
+
+</div>
+
+
+</section>
+
+
+);
 
 }

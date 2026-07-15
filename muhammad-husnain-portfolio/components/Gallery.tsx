@@ -1,40 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import Reveal from "./Reveal";
-import GlassCard from "./ui/GlassCard";
-import SectionTitle from "./ui/SectionTitle";
 
 
 const gallery = [
 
-  {
-    title:"Security Control Room",
-    category:"CCTV Monitoring",
-    image:"/images/control-room.jpg"
-  },
+{
+title:"Security Control Room",
+category:"CCTV Monitoring",
+image:"/images/control-room.jpg"
+},
 
 
-  {
-    title:"Security Operations",
-    category:"Site Security",
-    image:"/images/security.jpg"
-  },
+{
+title:"Security Operations",
+category:"Site Security",
+image:"/images/security.jpg"
+},
 
 
-  {
-    title:"Major Events",
-    category:"Event Security",
-    image:"/images/events.jpg"
-  },
+{
+title:"Major Events",
+category:"Event Security",
+image:"/images/events.jpg"
+},
 
 
-  {
-    title:"Professional Work",
-    category:"Career Gallery",
-    image:"/images/work.jpg"
-  }
+{
+title:"Professional Work",
+category:"Career Gallery",
+image:"/images/work.jpg"
+}
 
 ];
 
@@ -51,8 +48,6 @@ id="gallery"
 
 className="
 px-6
-py-24
-
 "
 
 >
@@ -61,9 +56,7 @@ py-24
 <div
 
 className="
-max-w-7xl
-mx-auto
-
+container
 "
 
 >
@@ -72,18 +65,18 @@ mx-auto
 <Reveal>
 
 
-<SectionTitle
+<h2
 
-badge="GALLERY"
-
-title="Professional Moments"
-
-description="
-A visual collection of security operations,
-professional activities and career highlights.
+className="
+text-center
+mb-14
 "
 
-/>
+>
+
+Professional Gallery
+
+</h2>
 
 
 
@@ -93,89 +86,94 @@ professional activities and career highlights.
 
 className="
 grid
-
-md:grid-cols-2
-
-gap-8
-
-mt-12
-
+sm:grid-cols-2
+lg:grid-cols-4
+gap-6
 "
 
 >
 
 
 {
+
 gallery.map((item,index)=>(
-
-
-<GlassCard
-
-key={item.title}
-
-className="
-p-0
-overflow-hidden
-
-"
-
->
 
 
 <motion.div
 
+
+key={item.title}
+
+
 initial={{
+
 opacity:0,
-y:40
+
+scale:.95
+
 }}
+
 
 whileInView={{
+
 opacity:1,
-y:0
+
+scale:1
+
 }}
+
 
 viewport={{
+
 once:true
+
 }}
+
 
 transition={{
-duration:.5,
-delay:index*.15
+
+delay:index*.12
+
 }}
+
 
 whileHover={{
+
 y:-8
+
 }}
 
-className="
-relative
-group
-overflow-hidden
 
+className="
+group
+relative
+overflow-hidden
+rounded-3xl
+glass
 "
 
 >
 
 
+
+
+
 <img
+
 
 src={item.image}
 
+
 alt={item.title}
 
+
 className="
-w-full
-
 h-80
-
+w-full
 object-cover
-
-group-hover:scale-110
-
 transition
-
 duration-700
-
+group-hover:scale-110
 "
 
 />
@@ -184,58 +182,35 @@ duration-700
 
 
 
+{/* Overlay */}
+
+
 <div
 
 className="
 absolute
-
 inset-0
-
 bg-gradient-to-t
-
-from-black/80
-
-via-black/20
-
+from-black/70
+via-black/10
 to-transparent
-
-"
-
-></div>
-
-
-
-
-
-<div
-
-className="
-absolute
-
-bottom-0
-
-left-0
-
-right-0
-
-p-7
-
-text-white
-
+flex
+items-end
+p-6
 "
 
 >
 
 
+<div>
+
+
 <p
 
 className="
-text-sm
-
-text-[#6DD5C4]
-
+text-xs
+text-[#DFF6F0]
 font-semibold
-
 "
 
 >
@@ -246,16 +221,13 @@ font-semibold
 
 
 
-
 <h3
 
 className="
 mt-2
-
-text-2xl
-
-font-black
-
+text-white
+text-lg
+font-bold
 "
 
 >
@@ -269,16 +241,20 @@ font-black
 </div>
 
 
+</div>
+
+
+
+
 
 </motion.div>
 
 
-</GlassCard>
-
-
 ))
 
+
 }
+
 
 
 </div>
@@ -293,6 +269,7 @@ font-black
 
 </section>
 
-)
+
+);
 
 }

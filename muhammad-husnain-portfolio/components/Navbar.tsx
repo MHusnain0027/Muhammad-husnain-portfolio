@@ -1,33 +1,59 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import {
+Menu,
+X,
+Moon,
+Sun
+} from "lucide-react";
 
 
-const links = [
-  {
-    name:"About",
-    href:"#about"
-  },
-  {
-    name:"Experience",
-    href:"#experience"
-  },
-  {
-    name:"Skills",
-    href:"#skills"
-  },
-  {
-    name:"Projects",
-    href:"#projects"
-  },
-  {
-    name:"Contact",
-    href:"#contact"
-  }
+const links=[
+
+{
+name:"Home",
+href:"#home"
+},
+
+{
+name:"About",
+href:"#about"
+},
+
+{
+name:"Experience",
+href:"#experience"
+},
+
+{
+name:"Skills",
+href:"#skills"
+},
+
+{
+name:"Projects",
+href:"#projects"
+},
+
+{
+name:"Certificates",
+href:"#certificates"
+},
+
+{
+name:"Gallery",
+href:"#gallery"
+},
+
+{
+name:"Contact",
+href:"#contact"
+}
+
 ];
+
 
 
 export default function Navbar(){
@@ -35,98 +61,86 @@ export default function Navbar(){
 
 const [open,setOpen]=useState(false);
 
+const [dark,setDark]=useState(false);
+
+
+
+function toggleTheme(){
+
+document.documentElement.classList.toggle("dark");
+
+setDark(!dark);
+
+}
+
 
 
 return (
 
-<header className="
+<nav
+
+className="
 fixed
 top-5
 left-0
 right-0
 z-50
-px-4
-">
-
-
-<motion.nav
-
-initial={{
-opacity:0,
-y:-30
-}}
-
-animate={{
-opacity:1,
-y:0
-}}
-
-transition={{
-duration:.6
-}}
-
-className="
-max-w-7xl
-mx-auto
-
-flex
-items-center
-justify-between
-
-rounded-3xl
-
-bg-white/60
-
-backdrop-blur-xl
-
-border
-border-[#6DD5C4]/30
-
-shadow-lg
-
 px-6
-py-4
-
 "
 
 >
 
 
-<Link href="#home">
+<div
 
-<div className="
-text-3xl
-font-black
-tracking-wider
-">
-
-<span className="text-slate-900">
-M
-</span>
-
-<span className="text-[#6DD5C4]">
-H
-</span>
-
-
-</div>
-
-</Link>
-
-
-
-
-
-<nav className="
-hidden
-md:flex
+className="
+container
+glass
+rounded-full
+py-4
+px-6
+flex
 items-center
-gap-8
-">
+justify-between
+"
+
+>
+
+
+<h1
+
+className="
+font-black
+text-xl
+text-[#2D9C8C]
+"
+
+>
+
+MH
+
+</h1>
+
+
+
+
+
+<div
+
+className="
+hidden
+lg:flex
+items-center
+gap-6
+"
+
+>
 
 
 {
+
 links.map((link)=>(
+
 
 <Link
 
@@ -135,10 +149,10 @@ key={link.name}
 href={link.href}
 
 className="
-text-slate-600
-font-medium
+text-sm
+font-semibold
+hover:text-[#2D9C8C]
 transition
-hover:text-[#0f766e]
 "
 
 >
@@ -147,55 +161,38 @@ hover:text-[#0f766e]
 
 </Link>
 
+
 ))
+
 
 }
 
 
-</nav>
 
+<button
 
-
-
-
-<div className="
-hidden
-md:block
-">
-
-
-<Link
-
-href="#resume"
+onClick={toggleTheme}
 
 className="
-flex
-items-center
-gap-2
-
-rounded-full
-
-bg-[#6DD5C4]
-
-px-6
-py-3
-
-font-semibold
-
-text-slate-900
-
-hover:bg-[#52c7b3]
-
-transition
+ml-4
 "
 
 >
 
-Resume
+{
 
-<ArrowUpRight size={17}/>
+dark ?
 
-</Link>
+<Sun size={20}/>
+
+:
+
+<Moon size={20}/>
+
+}
+
+
+</button>
 
 
 </div>
@@ -206,12 +203,11 @@ Resume
 
 <button
 
-onClick={()=>setOpen(!open)}
-
 className="
-md:hidden
-text-slate-800
+lg:hidden
 "
+
+onClick={()=>setOpen(!open)}
 
 >
 
@@ -219,79 +215,49 @@ text-slate-800
 
 open ?
 
-<X size={28}/>
+<X/>
 
 :
 
-<Menu size={28}/>
+<Menu/>
 
 }
+
 
 </button>
 
 
 
-
-</motion.nav>
-
+</div>
 
 
 
 
-<AnimatePresence>
 
 
 {
-open && (
 
-<motion.div
+open &&
 
-initial={{
-opacity:0,
-y:-20
-}}
-
-animate={{
-opacity:1,
-y:0
-}}
-
-exit={{
-opacity:0,
-y:-20
-}}
+<div
 
 className="
-md:hidden
-
+lg:hidden
+container
+glass
 mt-3
-
 rounded-3xl
-
-bg-white/80
-
-backdrop-blur-xl
-
-border
-border-[#6DD5C4]/30
-
 p-6
-
-shadow-xl
-
+flex
+flex-col
+gap-4
 "
 
 >
 
 
-<div className="
-flex
-flex-col
-gap-5
-">
-
-
 {
+
 links.map((link)=>(
 
 
@@ -304,8 +270,7 @@ href={link.href}
 onClick={()=>setOpen(false)}
 
 className="
-text-slate-700
-font-medium
+font-semibold
 "
 
 >
@@ -317,42 +282,21 @@ font-medium
 
 ))
 
+
 }
 
-
-<Link
-
-href="#resume"
-
-className="
-rounded-full
-bg-[#6DD5C4]
-py-3
-text-center
-font-semibold
-"
-
->
-
-Download Resume
-
-</Link>
 
 
 </div>
 
 
-</motion.div>
-
-)
 }
 
-</AnimatePresence>
 
 
+</nav>
 
-</header>
 
-)
+);
 
 }

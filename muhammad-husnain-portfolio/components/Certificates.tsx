@@ -1,70 +1,61 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import Reveal from "./Reveal";
-import GlassCard from "./ui/GlassCard";
-import SectionTitle from "./ui/SectionTitle";
 
 
 const certificates = [
 
-  {
-    title:"SIRA Security Certification",
-    issuer:"Security Industry Regulatory Agency - Dubai",
-    image:"/certificates/sira.jpg"
-  },
+{
+title:"SIRA Security Certification",
+issuer:"Security Industry Regulatory Agency - Dubai",
+category:"Security",
+image:"/certificates/sira.jpg"
+},
 
 
-  {
-    title:"Security System Operator Certificate",
-    issuer:"Security Operations & Control Room Training",
-    image:"/certificates/security-operator.jpg"
-  },
+{
+title:"Security System Operator Certificate",
+issuer:"Professional Security System Training",
+category:"Security Operations",
+image:"/certificates/security-system.jpg"
+},
 
 
-  {
-    title:"CCTV Operator Training Certificate",
-    issuer:"Security System Monitoring Training",
-    image:"/certificates/cctv.jpg"
-  },
+{
+title:"CCTV Operator Certification",
+issuer:"CCTV Monitoring & Surveillance Training",
+category:"CCTV",
+image:"/certificates/cctv.jpg"
+},
 
 
-  {
-    title:"Fire & Safety Training Certificate",
-    issuer:"Fire Safety Awareness & Emergency Response",
-    image:"/certificates/fire-safety.jpg"
-  },
+{
+title:"Microsoft Office Certification",
+issuer:"MS Office, Excel & Data Management Training",
+category:"Technical Skills",
+image:"/certificates/microsoft.jpg"
+},
 
 
-  {
-    title:"Microsoft Office Certificate",
-    issuer:"MS Office, Excel & Data Management Skills",
-    image:"/certificates/microsoft-office.jpg"
-  },
+{
+title:"Fire & Safety Training Certificate",
+issuer:"Fire Safety Awareness & Emergency Response",
+category:"Safety",
+image:"/certificates/fire-safety.jpg"
+},
 
 
-  {
-    title:"Web Development Certificate",
-    issuer:"HTML, CSS, JavaScript, React & Next.js Development",
-    image:"/certificates/web-development.jpg"
-  },
+{
+title:"Web Development Certificate",
+issuer:"Modern Web Development - Next.js & Frontend Technologies",
+category:"Development",
+image:"/certificates/web-development.jpg"
+}
 
-
-  {
-    title:"AI & Technology Certificate",
-    issuer:"Artificial Intelligence & Modern Technology Learning",
-    image:"/certificates/ai-web.jpg"
-  },
-
-
-  {
-    title:"UAE Professional Training",
-    issuer:"Workplace Safety & Professional Development",
-    image:"/certificates/uae-training.jpg"
-  }
 
 ];
+
 
 
 
@@ -79,8 +70,6 @@ id="certificates"
 
 className="
 px-6
-py-24
-
 "
 
 >
@@ -89,9 +78,7 @@ py-24
 <div
 
 className="
-max-w-7xl
-mx-auto
-
+container
 "
 
 >
@@ -100,18 +87,19 @@ mx-auto
 <Reveal>
 
 
-<SectionTitle
+<h2
 
-badge="CERTIFICATIONS"
-
-title="Professional Certificates & Training"
-
-description="
-Recognized certifications covering security operations,
-technology skills and professional development.
+className="
+text-center
+mb-14
 "
 
-/>
+>
+
+Certificates & Achievements
+
+</h2>
+
 
 
 
@@ -120,73 +108,87 @@ technology skills and professional development.
 
 className="
 grid
-
 sm:grid-cols-2
-
-lg:grid-cols-4
-
+lg:grid-cols-3
 gap-8
-
-mt-12
-
 "
 
 >
 
 
 {
+
 certificates.map((certificate,index)=>(
 
 
-<GlassCard
+<motion.div
+
 
 key={certificate.title}
 
-className="
-overflow-hidden
-p-0
 
+initial={{
+
+opacity:0,
+
+y:40
+
+}}
+
+
+whileInView={{
+
+opacity:1,
+
+y:0
+
+}}
+
+
+viewport={{
+
+once:true
+
+}}
+
+
+transition={{
+
+delay:index*.1
+
+}}
+
+
+whileHover={{
+
+y:-8
+
+}}
+
+
+className="
+glass
+overflow-hidden
+flex
+flex-col
 "
 
 >
 
 
-<motion.div
 
-initial={{
-opacity:0,
-scale:.85
-}}
 
-whileInView={{
-opacity:1,
-scale:1
-}}
 
-viewport={{
-once:true
-}}
-
-transition={{
-duration:.5,
-delay:index*.1
-}}
-
-whileHover={{
-y:-8
-}}
-
->
+{/* Certificate Image */}
 
 
 <div
 
 className="
-h-52
+h-48
 overflow-hidden
-
-bg-[#DFF6F0]
-
+rounded-2xl
+mb-5
 "
 
 >
@@ -202,13 +204,9 @@ className="
 w-full
 h-full
 object-cover
-
-hover:scale-110
-
 transition
-
 duration-500
-
+hover:scale-110
 "
 
 />
@@ -220,25 +218,44 @@ duration-500
 
 
 
+{/* Content */}
+
+
 <div
 
 className="
-p-6
-
+flex
+flex-col
+flex-1
 "
 
 >
 
 
+<span
+
+className="
+text-xs
+font-bold
+text-[#2D9C8C]
+"
+
+>
+
+{certificate.category}
+
+</span>
+
+
+
+
+
 <h3
 
 className="
+mt-3
 text-lg
-
 font-bold
-
-text-slate-900
-
 "
 
 >
@@ -250,17 +267,12 @@ text-slate-900
 
 
 
+
 <p
 
 className="
 mt-3
-
 text-sm
-
-text-slate-600
-
-leading-relaxed
-
 "
 
 >
@@ -274,15 +286,15 @@ leading-relaxed
 </div>
 
 
+
 </motion.div>
-
-
-</GlassCard>
 
 
 ))
 
+
 }
+
 
 
 </div>
@@ -297,6 +309,7 @@ leading-relaxed
 
 </section>
 
-)
+
+);
 
 }

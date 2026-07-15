@@ -3,65 +3,66 @@
 import { motion } from "framer-motion";
 
 import {
-  Mail,
-  Phone,
-  MapPin
+Mail,
+Phone,
+MapPin
 } from "lucide-react";
 
+
 import {
-  FaLinkedin,
-  FaGithub
+FaLinkedin,
+FaGithub
 } from "react-icons/fa";
 
-
 import Reveal from "./Reveal";
-import GlassCard from "./ui/GlassCard";
-import SectionTitle from "./ui/SectionTitle";
 
 
 
 const contactInfo = [
 
-  {
-    title:"Email",
-    value:"your-email@example.com",
-    link:"mailto:your-email@example.com",
-    icon:<Mail size={28}/>
-  },
+{
+title:"Email",
+value:"your-email@example.com",
+icon:<Mail size={26}/>,
+link:"mailto:your-email@example.com"
+},
 
 
-  {
-    title:"WhatsApp",
-    value:"+971 XX XXX XXXX",
-    link:"#",
-    icon:<Phone size={28}/>
-  },
+{
+title:"WhatsApp",
+value:"+971 XX XXX XXXX",
+icon:<Phone size={26}/>,
+link:"#"
+},
 
 
-  {
-    title:"LinkedIn",
-    value:"linkedin.com/in/your-profile",
-    link:"#",
-    icon:<FaLinkedin size={28}/>
-  },
+{
+title:"LinkedIn",
+value:"linkedin.com/in/your-profile",
+icon:<FaLinkedin size={26}/>,
+link:"#"
+},
 
 
-  {
-    title:"GitHub",
-    value:"github.com/your-profile",
-    link:"#",
-    icon:<FaGithub size={28}/>
-  },
+{
+title:"GitHub",
+value:"github.com/your-profile",
+icon:<FaGithub size={26}/>,
+link:"#"
+},
 
 
-  {
-    title:"Location",
-    value:"Dubai, UAE",
-    link:"#",
-    icon:<MapPin size={28}/>
-  }
+{
+title:"Location",
+value:"Dubai, UAE",
+icon:<MapPin size={26}/>,
+link:"#"
+}
+
 
 ];
+
+
 
 
 
@@ -76,8 +77,6 @@ id="contact"
 
 className="
 px-6
-py-24
-
 "
 
 >
@@ -86,9 +85,7 @@ py-24
 <div
 
 className="
-max-w-6xl
-mx-auto
-
+container
 "
 
 >
@@ -97,18 +94,18 @@ mx-auto
 <Reveal>
 
 
-<SectionTitle
+<h2
 
-badge="CONTACT"
-
-title="Let's Connect"
-
-description="
-Feel free to connect for security operations,
-technology projects and professional opportunities.
+className="
+text-center
+mb-14
 "
 
-/>
+>
+
+Contact Me
+
+</h2>
 
 
 
@@ -118,66 +115,73 @@ technology projects and professional opportunities.
 
 className="
 grid
-
 sm:grid-cols-2
-
-lg:grid-cols-3
-
+lg:grid-cols-5
 gap-6
-
-mt-12
-
 "
 
 >
 
 
 {
+
 contactInfo.map((item,index)=>(
-
-
-<GlassCard
-
-key={item.title}
-
-className="
-p-7
-
-"
-
->
 
 
 <motion.a
 
+
 href={item.link}
 
+
+key={item.title}
+
+
 initial={{
+
 opacity:0,
+
 y:30
+
 }}
+
 
 whileInView={{
+
 opacity:1,
+
 y:0
+
 }}
+
 
 viewport={{
+
 once:true
+
 }}
+
 
 transition={{
-duration:.4,
+
 delay:index*.1
+
 }}
+
 
 whileHover={{
+
 y:-8
+
 }}
 
-className="
-block
 
+className="
+glass
+flex
+flex-col
+items-center
+text-center
 "
 
 >
@@ -188,19 +192,13 @@ block
 className="
 w-14
 h-14
-
 rounded-2xl
-
 bg-[#DFF6F0]
-
-text-[#0f766e]
-
 flex
 items-center
 justify-center
-
+text-[#2D9C8C]
 mb-5
-
 "
 
 >
@@ -212,15 +210,12 @@ mb-5
 
 
 
+
 <h3
 
 className="
-text-xl
-
+text-base
 font-bold
-
-text-slate-900
-
 "
 
 >
@@ -232,15 +227,13 @@ text-slate-900
 
 
 
+
 <p
 
 className="
 mt-3
-
-text-slate-600
-
+text-sm
 break-words
-
 "
 
 >
@@ -254,70 +247,14 @@ break-words
 </motion.a>
 
 
-</GlassCard>
-
-
 ))
+
 
 }
 
 
+
 </div>
-
-
-
-
-
-<GlassCard
-
-className="
-mt-10
-p-8
-text-center
-
-"
-
->
-
-
-<h3
-
-className="
-text-2xl
-
-font-black
-
-text-slate-900
-
-"
-
->
-
-Available For Opportunities
-
-</h3>
-
-
-
-<p
-
-className="
-mt-3
-
-text-slate-600
-
-"
-
->
-
-Open to security technology projects,
-AI solutions and web development opportunities.
-
-</p>
-
-
-
-</GlassCard>
 
 
 
@@ -329,6 +266,7 @@ AI solutions and web development opportunities.
 
 </section>
 
-)
+
+);
 
 }

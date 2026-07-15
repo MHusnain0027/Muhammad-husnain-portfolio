@@ -8,36 +8,54 @@ import Certificates from "@/components/Certificates";
 import Gallery from "@/components/Gallery";
 import Resume from "@/components/Resume";
 import Contact from "@/components/Contact";
+import Footer from "@/components/footer";
+
 
 
 export default function Home() {
+
 
 return (
 
 <main>
 
+
 <Hero />
+
 
 <Stats />
 
+
 <About />
+
 
 <Experience />
 
+
 <Skills />
+
 
 <Projects />
 
+
 <Certificates />
+
 
 <Gallery />
 
+
 <Resume />
 
+
 <Contact />
+
+
+<Footer />
+
 
 </main>
 
 );
+
 
 }

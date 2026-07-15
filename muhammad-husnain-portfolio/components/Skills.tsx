@@ -1,53 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import Reveal from "./Reveal";
-import GlassCard from "./ui/GlassCard";
-import SectionTitle from "./ui/SectionTitle";
 
 
 const skills = [
 
-  {
-    name:"CCTV Monitoring",
-    level:95
-  },
+{
+name:"CCTV Monitoring",
+level:95,
+category:"Security"
+},
 
-  {
-    name:"Fire Alarm Systems",
-    level:90
-  },
+{
+name:"Fire Alarm Systems",
+level:90,
+category:"Security"
+},
 
-  {
-    name:"Access Control",
-    level:85
-  },
+{
+name:"Access Control Systems",
+level:85,
+category:"Security"
+},
 
-  {
-    name:"Security Operations",
-    level:95
-  },
+{
+name:"Security Operations",
+level:95,
+category:"Security"
+},
 
-  {
-    name:"Report Writing",
-    level:90
-  },
+{
+name:"Incident Reporting",
+level:90,
+category:"Management"
+},
 
-  {
-    name:"MS Office / Excel",
-    level:90
-  },
+{
+name:"MS Office & Excel",
+level:90,
+category:"Technical"
+},
 
-  {
-    name:"AI Tools",
-    level:80
-  },
+{
+name:"AI Tools",
+level:80,
+category:"Technology"
+},
 
-  {
-    name:"Next.js Development",
-    level:75
-  }
+{
+name:"Next.js Development",
+level:75,
+category:"Web Development"
+}
 
 ];
 
@@ -64,7 +69,6 @@ id="skills"
 
 className="
 px-6
-py-24
 "
 
 >
@@ -73,8 +77,7 @@ py-24
 <div
 
 className="
-max-w-6xl
-mx-auto
+container
 "
 
 >
@@ -83,18 +86,18 @@ mx-auto
 <Reveal>
 
 
-<SectionTitle
+<h2
 
-badge="SKILLS"
-
-title="Technical & Professional Expertise"
-
-description="
-Combining security operations knowledge with modern
-technology, AI tools and web development skills.
+className="
+text-center
+mb-14
 "
 
-/>
+>
+
+Skills & Expertise
+
+</h2>
 
 
 
@@ -105,52 +108,65 @@ technology, AI tools and web development skills.
 className="
 grid
 md:grid-cols-2
-
-gap-8
-
-mt-12
-
+gap-6
 "
 
 >
 
 
 {
+
 skills.map((skill,index)=>(
-
-
-<GlassCard
-
-key={skill.name}
-
-className="
-p-7
-
-"
-
->
 
 
 <motion.div
 
+
+key={skill.name}
+
+
 initial={{
+
 opacity:0,
+
 y:30
+
 }}
+
 
 whileInView={{
+
 opacity:1,
+
 y:0
+
 }}
+
 
 viewport={{
+
 once:true
+
 }}
 
+
 transition={{
-duration:.5,
+
 delay:index*.08
+
 }}
+
+
+whileHover={{
+
+y:-6
+
+}}
+
+
+className="
+glass
+"
 
 >
 
@@ -161,21 +177,20 @@ className="
 flex
 justify-between
 items-center
-
-mb-5
-
+mb-4
 "
 
 >
 
 
+<div>
+
+
 <h3
 
 className="
-text-lg
+text-base
 font-bold
-text-slate-900
-
 "
 
 >
@@ -185,13 +200,34 @@ text-slate-900
 </h3>
 
 
+<span
+
+className="
+text-xs
+text-[#2D9C8C]
+"
+
+>
+
+{skill.category}
+
+</span>
+
+
+</div>
+
+
 
 <span
 
 className="
+px-3
+py-1
+rounded-full
+bg-[#DFF6F0]
+text-[#2D9C8C]
+text-sm
 font-bold
-text-[#0f766e]
-
 "
 
 >
@@ -201,25 +237,24 @@ text-[#0f766e]
 </span>
 
 
+
 </div>
 
 
 
 
 
+{/* Progress Bar */}
+
+
 <div
 
 className="
 w-full
-
 h-3
-
-rounded-full
-
 bg-slate-200
-
+rounded-full
 overflow-hidden
-
 "
 
 >
@@ -227,56 +262,63 @@ overflow-hidden
 
 <motion.div
 
+
 initial={{
+
 width:0
+
 }}
+
 
 whileInView={{
+
 width:`${skill.level}%`
+
 }}
 
+
 viewport={{
+
 once:true
+
 }}
+
 
 transition={{
 
 duration:1,
-delay:.2
+
+ease:"easeOut"
 
 }}
 
+
 className="
 h-full
-
 rounded-full
-
-bg-gradient-to-r
-
-from-[#6DD5C4]
-
-to-[#2D9C8C]
-
+bg-[#6DD5C4]
 "
 
-/>
+></motion.div>
+
 
 
 </div>
+
 
 
 </motion.div>
 
 
-</GlassCard>
-
-
 ))
+
 
 }
 
 
+
 </div>
+
 
 
 </Reveal>
@@ -287,6 +329,7 @@ to-[#2D9C8C]
 
 </section>
 
-)
+
+);
 
 }

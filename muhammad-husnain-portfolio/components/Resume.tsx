@@ -1,10 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+  FileText,
+  Download,
+  Printer
+} from "lucide-react";
 
 import Reveal from "./Reveal";
-import GlassCard from "./ui/GlassCard";
-import SectionTitle from "./ui/SectionTitle";
+
 
 
 export default function Resume(){
@@ -18,8 +22,6 @@ id="resume"
 
 className="
 px-6
-py-24
-
 "
 
 >
@@ -28,9 +30,8 @@ py-24
 <div
 
 className="
-max-w-5xl
-mx-auto
-
+container
+max-w-4xl
 "
 
 >
@@ -39,66 +40,90 @@ mx-auto
 <Reveal>
 
 
-<SectionTitle
+<motion.div
 
-badge="RESUME"
 
-title="Professional Resume"
+initial={{
 
-description="
-Explore my security experience, technical skills,
-certifications and technology projects.
+opacity:0,
+
+y:40
+
+}}
+
+
+whileInView={{
+
+opacity:1,
+
+y:0
+
+}}
+
+
+viewport={{
+
+once:true
+
+}}
+
+
+whileHover={{
+
+y:-6
+
+}}
+
+
+className="
+glass
+text-center
+"
+
+>
+
+
+
+
+
+<div
+
+className="
+w-16
+h-16
+mx-auto
+rounded-2xl
+bg-[#DFF6F0]
+flex
+items-center
+justify-center
+mb-6
+"
+
+>
+
+<FileText
+
+size={32}
+
+className="
+text-[#2D9C8C]
 "
 
 />
 
+</div>
 
 
 
 
-<GlassCard
 
-className="
-p-10
-text-center
-mt-12
+<h2>
 
-"
-
->
-
-
-<motion.div
-
-whileHover={{
-y:-5
-}}
-
-transition={{
-duration:.3
-}}
-
->
-
-
-<h2
-
-className="
-text-3xl
-
-md:text-4xl
-
-font-black
-
-text-slate-900
-
-"
-
->
-
-Muhammad Husnain CV
+Professional Resume
 
 </h2>
+
 
 
 
@@ -106,23 +131,15 @@ Muhammad Husnain CV
 <p
 
 className="
-mt-5
-
-text-slate-600
-
-leading-relaxed
-
-max-w-2xl
-
 mx-auto
-
+mt-5
 "
 
 >
 
-Download my professional resume to explore my
-Security System Operator experience, CCTV expertise,
-certifications, AI learning and Web Development projects.
+Explore my professional background including security operations,
+CCTV monitoring, SIRA certification, technical skills,
+web development projects and AI-based solutions.
 
 </p>
 
@@ -133,18 +150,83 @@ certifications, AI learning and Web Development projects.
 <div
 
 className="
-flex
-
-flex-col
-
-md:flex-row
-
-justify-center
-
-gap-5
-
 mt-8
+grid
+sm:grid-cols-3
+gap-4
+"
 
+>
+
+
+<div className="glass">
+
+<h3>
+
+5+
+
+</h3>
+
+<p>
+
+Years Experience
+
+</p>
+
+</div>
+
+
+
+<div className="glass">
+
+<h3>
+
+UAE
+
+</h3>
+
+<p>
+
+Professional Experience
+
+</p>
+
+</div>
+
+
+
+<div className="glass">
+
+<h3>
+
+AI + Web
+
+</h3>
+
+<p>
+
+Technology Skills
+
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div
+
+className="
+mt-10
+flex
+flex-col
+sm:flex-row
+justify-center
+gap-4
 "
 
 >
@@ -158,25 +240,16 @@ href="/resume/Muhammad-Husnain-CV.pdf"
 target="_blank"
 
 className="
-px-8
-
-py-3
-
-rounded-full
-
-bg-[#6DD5C4]
-
-text-[#064e3b]
-
-font-bold
-
-hover:scale-105
-
-transition
-
+btn-primary
+flex
+items-center
+justify-center
+gap-2
 "
 
 >
+
+<FileText size={18}/>
 
 View Resume
 
@@ -193,27 +266,17 @@ href="/resume/Muhammad-Husnain-CV.pdf"
 download
 
 className="
-px-8
-
-py-3
-
-rounded-full
-
-border
-
-border-[#6DD5C4]
-
-text-[#0f766e]
-
-font-bold
-
-hover:bg-[#DFF6F0]
-
-transition
-
+btn-secondary
+flex
+items-center
+justify-center
+gap-2
 "
 
 >
+
+
+<Download size={18}/>
 
 Download CV
 
@@ -228,27 +291,16 @@ Download CV
 onClick={()=>window.print()}
 
 className="
-px-8
-
-py-3
-
-rounded-full
-
-border
-
-border-slate-300
-
-font-bold
-
-text-slate-700
-
-hover:bg-slate-100
-
-transition
-
+btn-secondary
+flex
+items-center
+justify-center
+gap-2
 "
 
 >
+
+<Printer size={18}/>
 
 Print
 
@@ -260,11 +312,9 @@ Print
 
 
 
+
+
 </motion.div>
-
-
-</GlassCard>
-
 
 
 </Reveal>
@@ -275,6 +325,7 @@ Print
 
 </section>
 
-)
+
+);
 
 }

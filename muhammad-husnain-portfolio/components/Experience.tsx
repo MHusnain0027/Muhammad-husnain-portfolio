@@ -1,53 +1,54 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import Reveal from "./Reveal";
-import GlassCard from "./ui/GlassCard";
-import SectionTitle from "./ui/SectionTitle";
 
 
 const experiences = [
 
-  {
-    year:"2026",
-    role:"Security System Operator",
-    company:"Security Operations & Control Room",
-    description:
-    "Managing CCTV monitoring, incident reporting, security coordination and daily operational activities."
-  },
+{
+year:"2026",
+role:"Security System Operator",
+company:"Security Operations & Control Room",
+description:
+"CCTV monitoring, incident reporting, security system handling and daily operational support."
+},
 
-  {
-    year:"2025",
-    role:"Security Operations Support",
-    company:"Expo City Dubai",
-    description:
-    "Supported security operations, access control procedures, safety compliance and event activities."
-  },
 
-  {
-    year:"2024",
-    role:"Event Security Operations",
-    company:"COP28 & Major Events Support",
-    description:
-    "Provided professional event security support, crowd management and operational monitoring."
-  },
+{
+year:"2025",
+role:"Security Operations Support",
+company:"Expo City Dubai",
+description:
+"Supported professional security operations, monitoring activities and site safety procedures."
+},
 
-  {
-    year:"2023",
-    role:"Security Monitoring & Reporting",
-    company:"Dubai Rugby Sevens",
-    description:
-    "Handled monitoring activities, reporting tasks and coordination during large-scale events."
-  },
 
-  {
-    year:"Previous",
-    role:"Data Management",
-    company:"Reports, Records & System Handling",
-    description:
-    "Experienced in data entry, documentation, reporting and maintaining operational records."
-  }
+{
+year:"2024",
+role:"Event Security Operations",
+company:"COP28 & Major Events Support",
+description:
+"Provided security support during large-scale events with focus on safety and coordination."
+},
+
+
+{
+year:"2023",
+role:"Security Monitoring & Reporting",
+company:"Dubai Rugby Sevens",
+description:
+"Handled monitoring, reporting and communication responsibilities during major events."
+},
+
+
+{
+year:"Previous",
+role:"Data Management",
+company:"Reports, Records & System Handling",
+description:
+"Managed documentation, data entry, reporting and administrative system tasks."
+}
 
 ];
 
@@ -64,7 +65,6 @@ id="experience"
 
 className="
 px-6
-py-24
 "
 
 >
@@ -73,8 +73,8 @@ py-24
 <div
 
 className="
+container
 max-w-5xl
-mx-auto
 "
 
 >
@@ -83,18 +83,18 @@ mx-auto
 <Reveal>
 
 
-<SectionTitle
+<h2
 
-badge="EXPERIENCE"
-
-title="Professional Journey"
-
-description="
-Security operations experience combined with reporting,
-technology and operational management skills.
+className="
+text-center
+mb-16
 "
 
-/>
+>
+
+Experience
+
+</h2>
 
 
 
@@ -103,8 +103,6 @@ technology and operational management skills.
 
 className="
 relative
-mt-14
-
 "
 
 >
@@ -116,14 +114,12 @@ mt-14
 
 className="
 absolute
-left-3
+left-4
+md:left-1/2
 top-0
 bottom-0
-
 w-[2px]
-
 bg-[#6DD5C4]
-
 "
 
 ></div>
@@ -131,38 +127,34 @@ bg-[#6DD5C4]
 
 
 
-
-<div
-
-className="
-space-y-10
-
-"
-
->
-
-
 {
+
 experiences.map((item,index)=>(
 
 
 <motion.div
 
-key={index}
+
+key={item.year}
+
 
 initial={{
 
 opacity:0,
-x:-40
+
+y:40
 
 }}
+
 
 whileInView={{
 
 opacity:1,
-x:0
+
+y:0
 
 }}
+
 
 viewport={{
 
@@ -170,45 +162,42 @@ once:true
 
 }}
 
+
 transition={{
 
 duration:.5,
+
 delay:index*.1
 
 }}
 
+
 className="
 relative
-pl-10
-
+mb-12
 "
 
 >
 
 
-{/* Timeline Dot */}
+
+{/* Dot */}
 
 <div
 
 className="
 absolute
-
-left-0
+left-[6px]
+md:left-1/2
+md:-translate-x-1/2
 top-8
-
-w-7
-h-7
-
+w-5
+h-5
 rounded-full
-
 bg-[#6DD5C4]
-
 border-4
-
 border-white
-
 shadow-lg
-
 "
 
 ></div>
@@ -216,26 +205,43 @@ shadow-lg
 
 
 
-<GlassCard
 
-className="
-p-7
+{/* Card */}
 
-"
+
+<div
+
+className={`
+glass
+ml-12
+md:ml-0
+md:w-[45%]
+
+${
+
+index % 2 === 0
+
+?
+
+"md:mr-auto"
+
+:
+
+"md:ml-auto"
+
+}
+
+`}
 
 >
-
 
 
 <span
 
 className="
 text-sm
-
-font-semibold
-
-text-[#0f766e]
-
+font-bold
+text-[#2D9C8C]
 "
 
 >
@@ -251,13 +257,6 @@ text-[#0f766e]
 
 className="
 mt-3
-
-text-2xl
-
-font-bold
-
-text-slate-900
-
 "
 
 >
@@ -273,11 +272,8 @@ text-slate-900
 
 className="
 mt-2
-
-font-medium
-
-text-slate-700
-
+text-base
+font-semibold
 "
 
 >
@@ -293,11 +289,7 @@ text-slate-700
 
 className="
 mt-4
-
-text-slate-600
-
-leading-relaxed
-
+text-sm
 "
 
 >
@@ -308,7 +300,8 @@ leading-relaxed
 
 
 
-</GlassCard>
+
+</div>
 
 
 
@@ -324,10 +317,6 @@ leading-relaxed
 </div>
 
 
-</div>
-
-
-
 </Reveal>
 
 
@@ -336,6 +325,7 @@ leading-relaxed
 
 </section>
 
-)
+
+);
 
 }
