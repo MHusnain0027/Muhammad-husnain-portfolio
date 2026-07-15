@@ -1,37 +1,68 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import Reveal from "./Reveal";
+import GlassCard from "./ui/GlassCard";
+import SectionTitle from "./ui/SectionTitle";
 
 
 const certificates = [
 
-{
-title:"SIRA Security Certification",
-issuer:"Security Industry Regulatory Agency",
-image:"/certificates/sira.jpg"
-},
+  {
+    title:"SIRA Security Certification",
+    issuer:"Security Industry Regulatory Agency - Dubai",
+    image:"/certificates/sira.jpg"
+  },
 
 
-{
-title:"CCTV Operator Training",
-issuer:"Security System Training",
-image:"/certificates/cctv.jpg"
-},
+  {
+    title:"Security System Operator Certificate",
+    issuer:"Security Operations & Control Room Training",
+    image:"/certificates/security-operator.jpg"
+  },
 
 
-{
-title:"Fire & Safety Training",
-issuer:"Safety Certification",
-image:"/certificates/fire-safety.jpg"
-},
+  {
+    title:"CCTV Operator Training Certificate",
+    issuer:"Security System Monitoring Training",
+    image:"/certificates/cctv.jpg"
+  },
 
 
-{
-title:"AI & Web Development",
-issuer:"Technology Learning",
-image:"/certificates/ai-web.jpg"
-}
+  {
+    title:"Fire & Safety Training Certificate",
+    issuer:"Fire Safety Awareness & Emergency Response",
+    image:"/certificates/fire-safety.jpg"
+  },
+
+
+  {
+    title:"Microsoft Office Certificate",
+    issuer:"MS Office, Excel & Data Management Skills",
+    image:"/certificates/microsoft-office.jpg"
+  },
+
+
+  {
+    title:"Web Development Certificate",
+    issuer:"HTML, CSS, JavaScript, React & Next.js Development",
+    image:"/certificates/web-development.jpg"
+  },
+
+
+  {
+    title:"AI & Technology Certificate",
+    issuer:"Artificial Intelligence & Modern Technology Learning",
+    image:"/certificates/ai-web.jpg"
+  },
+
+
+  {
+    title:"UAE Professional Training",
+    issuer:"Workplace Safety & Professional Development",
+    image:"/certificates/uae-training.jpg"
+  }
 
 ];
 
@@ -49,38 +80,39 @@ id="certificates"
 className="
 px-6
 py-24
-bg-white
-dark:bg-black
+
 "
 
 >
 
 
 <div
+
 className="
-max-w-6xl
+max-w-7xl
 mx-auto
+
 "
+
 >
 
 
 <Reveal>
 
 
-<h2
+<SectionTitle
 
-className="
-text-4xl
-md:text-5xl
-font-bold
-mb-12
+badge="CERTIFICATIONS"
+
+title="Professional Certificates & Training"
+
+description="
+Recognized certifications covering security operations,
+technology skills and professional development.
 "
 
->
+/>
 
-Certificates
-
-</h2>
 
 
 
@@ -88,9 +120,15 @@ Certificates
 
 className="
 grid
-md:grid-cols-2
+
+sm:grid-cols-2
+
 lg:grid-cols-4
+
 gap-8
+
+mt-12
+
 "
 
 >
@@ -100,14 +138,24 @@ gap-8
 certificates.map((certificate,index)=>(
 
 
-<motion.div
+<GlassCard
 
 key={certificate.title}
 
+className="
+overflow-hidden
+p-0
+
+"
+
+>
+
+
+<motion.div
 
 initial={{
 opacity:0,
-scale:0.8
+scale:.85
 }}
 
 whileInView={{
@@ -120,30 +168,27 @@ once:true
 }}
 
 transition={{
-delay:index*0.15
+duration:.5,
+delay:index*.1
 }}
 
 whileHover={{
-scale:1.05
+y:-8
 }}
-
-className="
-rounded-3xl
-overflow-hidden
-bg-gray-100
-dark:bg-white/10
-border
-shadow-xl
-"
 
 >
 
 
 <div
+
 className="
 h-52
 overflow-hidden
+
+bg-[#DFF6F0]
+
 "
+
 >
 
 
@@ -157,8 +202,13 @@ className="
 w-full
 h-full
 object-cover
+
 hover:scale-110
+
 transition
+
+duration-500
+
 "
 
 />
@@ -168,18 +218,29 @@ transition
 
 
 
+
+
 <div
+
 className="
 p-6
+
 "
+
 >
 
 
 <h3
+
 className="
-font-bold
 text-lg
+
+font-bold
+
+text-slate-900
+
 "
+
 >
 
 {certificate.title}
@@ -188,11 +249,20 @@ text-lg
 
 
 
+
 <p
+
 className="
-text-gray-500
-mt-2
+mt-3
+
+text-sm
+
+text-slate-600
+
+leading-relaxed
+
 "
+
 >
 
 {certificate.issuer}
@@ -200,19 +270,23 @@ mt-2
 </p>
 
 
-</div>
 
+</div>
 
 
 </motion.div>
 
 
+</GlassCard>
+
+
 ))
+
 }
 
 
-
 </div>
+
 
 
 </Reveal>
@@ -223,6 +297,6 @@ mt-2
 
 </section>
 
-);
+)
 
 }

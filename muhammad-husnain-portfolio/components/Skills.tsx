@@ -1,52 +1,56 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import Reveal from "./Reveal";
+import GlassCard from "./ui/GlassCard";
+import SectionTitle from "./ui/SectionTitle";
 
 
 const skills = [
 
-{
-name:"CCTV Monitoring",
-level:95
-},
+  {
+    name:"CCTV Monitoring",
+    level:95
+  },
 
-{
-name:"Fire Alarm Systems",
-level:90
-},
+  {
+    name:"Fire Alarm Systems",
+    level:90
+  },
 
-{
-name:"Access Control",
-level:85
-},
+  {
+    name:"Access Control",
+    level:85
+  },
 
-{
-name:"Security Operations",
-level:95
-},
+  {
+    name:"Security Operations",
+    level:95
+  },
 
-{
-name:"Report Writing",
-level:90
-},
+  {
+    name:"Report Writing",
+    level:90
+  },
 
-{
-name:"MS Office / Excel",
-level:90
-},
+  {
+    name:"MS Office / Excel",
+    level:90
+  },
 
-{
-name:"AI Tools",
-level:80
-},
+  {
+    name:"AI Tools",
+    level:80
+  },
 
-{
-name:"Next.js Development",
-level:75
-}
+  {
+    name:"Next.js Development",
+    level:75
+  }
 
 ];
+
 
 
 export default function Skills(){
@@ -55,48 +59,59 @@ export default function Skills(){
 return (
 
 <section
+
 id="skills"
+
 className="
 px-6
 py-24
-bg-white
-dark:bg-black
 "
+
 >
 
 
 <div
+
 className="
 max-w-6xl
 mx-auto
 "
+
 >
 
 
 <Reveal>
 
 
-<h2
-className="
-text-4xl
-md:text-5xl
-font-bold
-mb-12
+<SectionTitle
+
+badge="SKILLS"
+
+title="Technical & Professional Expertise"
+
+description="
+Combining security operations knowledge with modern
+technology, AI tools and web development skills.
 "
->
 
-Skills
+/>
 
-</h2>
+
 
 
 
 <div
+
 className="
 grid
 md:grid-cols-2
+
 gap-8
+
+mt-12
+
 "
+
 >
 
 
@@ -104,13 +119,23 @@ gap-8
 skills.map((skill,index)=>(
 
 
-<motion.div
+<GlassCard
 
 key={skill.name}
 
+className="
+p-7
+
+"
+
+>
+
+
+<motion.div
+
 initial={{
 opacity:0,
-y:40
+y:30
 }}
 
 whileInView={{
@@ -123,39 +148,36 @@ once:true
 }}
 
 transition={{
-delay:index*0.1
+duration:.5,
+delay:index*.08
 }}
-
-whileHover={{
-scale:1.03
-}}
-
-className="
-p-7
-rounded-3xl
-bg-gray-100
-dark:bg-white/10
-border
-shadow-xl
-backdrop-blur
-"
 
 >
 
 
 <div
+
 className="
 flex
 justify-between
-mb-4
+items-center
+
+mb-5
+
 "
+
 >
 
+
 <h3
+
 className="
-font-bold
 text-lg
+font-bold
+text-slate-900
+
 "
+
 >
 
 {skill.name}
@@ -163,8 +185,19 @@ text-lg
 </h3>
 
 
-<span>
+
+<span
+
+className="
+font-bold
+text-[#0f766e]
+
+"
+
+>
+
 {skill.level}%
+
 </span>
 
 
@@ -172,15 +205,23 @@ text-lg
 
 
 
+
+
 <div
+
 className="
 w-full
+
 h-3
+
 rounded-full
-bg-gray-300
-dark:bg-gray-700
+
+bg-slate-200
+
 overflow-hidden
+
 "
+
 >
 
 
@@ -199,15 +240,23 @@ once:true
 }}
 
 transition={{
-duration:1
-}}
 
+duration:1,
+delay:.2
+
+}}
 
 className="
 h-full
+
 rounded-full
-bg-black
-dark:bg-white
+
+bg-gradient-to-r
+
+from-[#6DD5C4]
+
+to-[#2D9C8C]
+
 "
 
 />
@@ -216,13 +265,15 @@ dark:bg-white
 </div>
 
 
-
 </motion.div>
 
 
-))
-}
+</GlassCard>
 
+
+))
+
+}
 
 
 </div>
@@ -236,6 +287,6 @@ dark:bg-white
 
 </section>
 
-);
+)
 
 }

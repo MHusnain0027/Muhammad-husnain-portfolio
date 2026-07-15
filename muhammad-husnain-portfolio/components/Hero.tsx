@@ -2,326 +2,276 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+
+import GlassCard from "./ui/GlassCard";
+import Button from "./ui/Button";
 import Reveal from "./Reveal";
 
+
 export default function Hero() {
-  return (
-    <section
-      id="home"
-      className="
-      relative
-      min-h-screen
-      flex
-      items-center
-      overflow-hidden
-      px-6
-      pt-28
-      "
-    >
 
-      {/* Background Glow */}
 
-      <div className="
-      absolute
-      top-20
-      left-1/2
-      -translate-x-1/2
-      w-[500px]
-      h-[500px]
-      bg-blue-600/20
-      blur-[120px]
-      rounded-full
-      " />
+return (
 
+<section
 
-      <Reveal>
+id="home"
 
-        <div className="
-        relative
-        z-10
-        max-w-7xl
-        mx-auto
-        grid
-        md:grid-cols-2
-        gap-12
-        items-center
-        ">
+className="
+min-h-screen
+flex
+items-center
+justify-center
 
+px-6
+pt-32
 
-          {/* LEFT CONTENT */}
+"
 
-          <div>
+>
 
 
-            <motion.div
-              initial={{opacity:0,y:20}}
-              animate={{opacity:1,y:0}}
-              transition={{duration:0.7}}
-              className="
-              inline-flex
-              mb-6
-              px-5
-              py-2
-              rounded-full
-              border
-              border-white/10
-              bg-white/5
-              backdrop-blur-xl
-              text-sm
-              text-blue-300
-              "
-            >
+<Reveal>
 
-              🛡️ Security Operations × Artificial Intelligence
 
-            </motion.div>
+<GlassCard
 
+className="
+max-w-5xl
+w-full
 
+p-8
+md:p-14
 
-            <h1 className="
-            text-5xl
-            md:text-7xl
-            font-black
-            leading-tight
-            ">
+text-center
 
-              Muhammad
+"
 
-              <br/>
+>
 
-              <span className="gradient-text">
 
-                Husnain
+<motion.div
 
-              </span>
+initial={{
+opacity:0,
+scale:.9
+}}
 
-            </h1>
+animate={{
+opacity:1,
+scale:1
+}}
 
+transition={{
+duration:.7
+}}
 
+>
 
-            <h2 className="
-            mt-6
-            text-2xl
-            md:text-4xl
-            font-semibold
-            text-white
-            ">
 
-              Security System Operator
-              <br/>
+{/* Logo */}
 
-              <span className="text-slate-400">
+<motion.div
 
-              CCTV Specialist | AI Enthusiast
+animate={{
+y:[0,-10,0]
+}}
 
-              </span>
+transition={{
+duration:4,
+repeat:Infinity
+}}
 
-            </h2>
+className="
+mx-auto
+mb-8
 
+w-28
+h-28
 
+rounded-full
 
-            <p className="
-            mt-6
-            max-w-xl
-            text-slate-300
-            text-lg
-            leading-relaxed
-            ">
+flex
+items-center
+justify-center
 
-              Building smarter security solutions with
-              CCTV monitoring, FireGuard AI and modern
-              web technologies.
+text-5xl
+font-black
 
-            </p>
+bg-[#6DD5C4]
 
+text-slate-900
 
+shadow-xl
 
-            <div className="
-            mt-10
-            flex
-            flex-col
-            sm:flex-row
-            gap-5
-            ">
+"
 
+>
 
-              <Link
-              href="#projects"
-              className="
-              rounded-full
-              bg-blue-600
-              px-8
-              py-4
-              font-semibold
-              text-white
-              transition
-              hover:bg-blue-500
-              hover:scale-105
-              "
-              >
+MH
 
-                View Projects →
+</motion.div>
 
-              </Link>
 
 
 
-              <Link
-              href="#resume"
-              className="
-              rounded-full
-              border
-              border-white/20
-              bg-white/5
-              px-8
-              py-4
-              font-semibold
-              text-white
-              backdrop-blur-xl
-              transition
-              hover:bg-white/10
-              "
-              >
 
-                Download Resume
+<h1
 
-              </Link>
+className="
+text-5xl
+md:text-7xl
 
+font-black
 
-            </div>
+text-slate-900
 
+leading-tight
 
-          </div>
+"
 
+>
 
+Muhammad
 
+<span className="
+text-[#4FC8B3]
+">
 
+ Husnain
 
-          {/* RIGHT CARD */}
+</span>
 
 
-          <motion.div
+</h1>
 
-          initial={{opacity:0,scale:0.8}}
-          animate={{opacity:1,scale:1}}
-          transition={{duration:0.8}}
 
-          className="
-          relative
-          "
 
-          >
 
 
-            <div className="
-            glass
-            rounded-3xl
-            p-8
-            border
-            border-white/10
-            "
+<h2
 
-            >
+className="
+mt-6
 
+text-xl
+md:text-3xl
 
-              <div className="
-              text-6xl
-              mb-6
-              "
-              >
+font-bold
 
-              🛡️
+text-slate-700
 
-              </div>
+"
 
+>
 
+Security Operations
 
-              <h3 className="
-              text-3xl
-              font-bold
-              "
-              >
+<br/>
 
-              Smart Security
+<span className="
+text-[#0f766e]
+">
 
-              </h3>
+AI Technology × Web Development
 
+</span>
 
 
-              <p className="
-              mt-4
-              text-slate-300
-              "
-              >
+</h2>
 
-              Combining security operations,
-              artificial intelligence and modern
-              technology.
 
-              </p>
 
 
 
-              <div className="
-              mt-8
-              space-y-4
-              ">
+<p
 
+className="
+max-w-3xl
+mx-auto
 
-                <div className="
-                rounded-xl
-                bg-white/5
-                p-4
-                border
-                border-white/10
-                ">
+mt-6
 
-                  📹 CCTV Monitoring
+text-lg
 
-                </div>
+text-slate-600
 
+leading-relaxed
 
-                <div className="
-                rounded-xl
-                bg-white/5
-                p-4
-                border
-                border-white/10
-                ">
+"
 
-                  🔥 FireGuard AI
+>
 
-                </div>
+Professional Security System Operator specializing in
+CCTV monitoring, security operations, reporting,
+automation solutions and modern web technologies.
 
+</p>
 
-                <div className="
-                rounded-xl
-                bg-white/5
-                p-4
-                border
-                border-white/10
-                ">
 
-                  ⚡ Next.js Development
 
-                </div>
 
 
-              </div>
+<div
 
+className="
+mt-10
 
-            </div>
+flex
+flex-col
+sm:flex-row
 
+gap-5
 
-          </motion.div>
+justify-center
 
+"
 
-        </div>
+>
 
 
-      </Reveal>
+<Link href="#resume">
 
+<Button>
 
-    </section>
-  );
+Download CV
+
+</Button>
+
+</Link>
+
+
+
+
+
+<Link href="#projects">
+
+<Button variant="secondary">
+
+View Projects
+
+</Button>
+
+</Link>
+
+
+</div>
+
+
+
+
+
+</motion.div>
+
+
+</GlassCard>
+
+
+</Reveal>
+
+
+</section>
+
+)
+
 }

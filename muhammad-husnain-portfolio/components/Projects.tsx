@@ -1,49 +1,52 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import Reveal from "./Reveal";
+import GlassCard from "./ui/GlassCard";
+import SectionTitle from "./ui/SectionTitle";
 
 
 const projects = [
 
-{
-title:"🔥 FireGuard AI",
-category:"AI Security System",
-description:
-"AI based fire alarm assistant system designed for smart monitoring, emergency support and security operations.",
-tech:[
-"Next.js",
-"TypeScript",
-"AI",
-"Supabase"
-]
-},
+  {
+    title:"🔥 FireGuard AI",
+    category:"AI Security System",
+    description:
+    "AI based fire alarm assistant system designed for smart monitoring, emergency support and security operations.",
+    tech:[
+      "Next.js",
+      "TypeScript",
+      "AI",
+      "Supabase"
+    ]
+  },
 
 
-{
-title:"🌐 Muhammad Husnain Portfolio",
-category:"Personal Brand Website",
-description:
-"Professional portfolio website showcasing security experience, technical skills and modern web development.",
-tech:[
-"Next.js",
-"Tailwind CSS",
-"Framer Motion"
-]
-},
+  {
+    title:"🌐 Muhammad Husnain Portfolio",
+    category:"Personal Brand Website",
+    description:
+    "Professional portfolio website showcasing security experience, technical skills and modern web development capabilities.",
+    tech:[
+      "Next.js",
+      "Tailwind CSS",
+      "Framer Motion"
+    ]
+  },
 
 
-{
-title:"🚀 Future AI Projects",
-category:"Upcoming Technology",
-description:
-"Future automation and artificial intelligence solutions for security and smart systems.",
-tech:[
-"AI",
-"Automation",
-"Web Technology"
-]
-}
+  {
+    title:"🚀 Future AI Projects",
+    category:"Upcoming Technology",
+    description:
+    "Future automation and artificial intelligence solutions focused on security systems and smart technology.",
+    tech:[
+      "AI",
+      "Automation",
+      "Web Technology"
+    ]
+  }
 
 ];
 
@@ -55,48 +58,61 @@ export default function Projects(){
 return (
 
 <section
+
 id="projects"
+
 className="
 px-6
 py-24
-bg-gray-50
-dark:bg-black
+
 "
+
 >
 
 
 <div
+
 className="
 max-w-6xl
 mx-auto
+
 "
+
 >
 
 
 <Reveal>
 
 
-<h2
-className="
-text-4xl
-md:text-5xl
-font-bold
-mb-12
+<SectionTitle
+
+badge="PROJECTS"
+
+title="Featured Technology Projects"
+
+description="
+Innovative projects combining security knowledge,
+AI solutions and modern web development.
 "
->
 
-Projects
+/>
 
-</h2>
+
 
 
 
 <div
+
 className="
 grid
 md:grid-cols-3
+
 gap-8
+
+mt-12
+
 "
+
 >
 
 
@@ -104,13 +120,24 @@ gap-8
 projects.map((project,index)=>(
 
 
-<motion.div
+<GlassCard
 
 key={project.title}
 
+className="
+p-8
+h-full
+
+"
+
+>
+
+
+<motion.div
+
 initial={{
 opacity:0,
-y:50
+y:40
 }}
 
 whileInView={{
@@ -123,31 +150,28 @@ once:true
 }}
 
 transition={{
-delay:index*0.15
+duration:.5,
+delay:index*.15
 }}
 
 whileHover={{
-y:-10
+y:-8
 }}
-
-className="
-p-8
-rounded-3xl
-bg-white
-dark:bg-white/10
-border
-shadow-xl
-backdrop-blur
-"
 
 >
 
 
 <span
+
 className="
 text-sm
-text-gray-500
+
+font-semibold
+
+text-[#0f766e]
+
 "
+
 >
 
 {project.category}
@@ -156,13 +180,21 @@ text-gray-500
 
 
 
+
+
 <h3
+
 className="
 text-2xl
-font-bold
+
+font-black
+
 mt-4
-mb-4
+
+text-slate-900
+
 "
+
 >
 
 {project.title}
@@ -171,13 +203,19 @@ mb-4
 
 
 
+
+
 <p
+
 className="
-text-gray-600
-dark:text-gray-300
-mb-6
+mt-5
+
+text-slate-600
+
 leading-relaxed
+
 "
+
 >
 
 {project.description}
@@ -186,12 +224,20 @@ leading-relaxed
 
 
 
+
+
 <div
+
 className="
 flex
 flex-wrap
-gap-2
+
+gap-3
+
+mt-6
+
 "
+
 >
 
 
@@ -204,12 +250,19 @@ project.tech.map((item)=>(
 key={item}
 
 className="
-px-3
-py-1
+px-4
+py-2
+
 rounded-full
+
 text-sm
-bg-gray-200
-dark:bg-white/20
+
+font-medium
+
+bg-[#DFF6F0]
+
+text-[#0f766e]
+
 "
 
 >
@@ -220,6 +273,7 @@ dark:bg-white/20
 
 
 ))
+
 }
 
 
@@ -230,7 +284,11 @@ dark:bg-white/20
 </motion.div>
 
 
+</GlassCard>
+
+
 ))
+
 }
 
 
@@ -245,6 +303,6 @@ dark:bg-white/20
 
 </section>
 
-);
+)
 
 }

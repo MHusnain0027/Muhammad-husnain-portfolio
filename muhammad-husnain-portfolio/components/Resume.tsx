@@ -1,7 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import Reveal from "./Reveal";
+import GlassCard from "./ui/GlassCard";
+import SectionTitle from "./ui/SectionTitle";
 
 
 export default function Resume(){
@@ -16,8 +19,7 @@ id="resume"
 className="
 px-6
 py-24
-bg-white
-dark:bg-black
+
 "
 
 >
@@ -28,6 +30,7 @@ dark:bg-black
 className="
 max-w-5xl
 mx-auto
+
 "
 
 >
@@ -36,22 +39,44 @@ mx-auto
 <Reveal>
 
 
-<motion.div
+<SectionTitle
 
-whileHover={{
-scale:1.02
-}}
+badge="RESUME"
+
+title="Professional Resume"
+
+description="
+Explore my security experience, technical skills,
+certifications and technology projects.
+"
+
+/>
+
+
+
+
+
+<GlassCard
 
 className="
 p-10
-rounded-3xl
-bg-gray-100
-dark:bg-white/10
-border
-shadow-xl
 text-center
-backdrop-blur
+mt-12
+
 "
+
+>
+
+
+<motion.div
+
+whileHover={{
+y:-5
+}}
+
+transition={{
+duration:.3
+}}
 
 >
 
@@ -59,35 +84,49 @@ backdrop-blur
 <h2
 
 className="
-text-4xl
-md:text-5xl
-font-bold
-mb-6
+text-3xl
+
+md:text-4xl
+
+font-black
+
+text-slate-900
+
 "
 
 >
 
-My Resume
+Muhammad Husnain CV
 
 </h2>
+
 
 
 
 <p
 
 className="
-text-gray-600
-dark:text-gray-300
-mb-8
+mt-5
+
+text-slate-600
+
 leading-relaxed
+
+max-w-2xl
+
+mx-auto
+
 "
 
 >
 
-Download my professional resume to explore my security experience,
-technical skills, certifications and project work.
+Download my professional resume to explore my
+Security System Operator experience, CCTV expertise,
+certifications, AI learning and Web Development projects.
 
 </p>
+
+
 
 
 
@@ -95,13 +134,21 @@ technical skills, certifications and project work.
 
 className="
 flex
+
 flex-col
+
 md:flex-row
+
 justify-center
+
 gap-5
+
+mt-8
+
 "
 
 >
+
 
 
 <a
@@ -112,15 +159,21 @@ target="_blank"
 
 className="
 px-8
+
 py-3
+
 rounded-full
-bg-black
-text-white
-dark:bg-white
-dark:text-black
-font-semibold
+
+bg-[#6DD5C4]
+
+text-[#064e3b]
+
+font-bold
+
 hover:scale-105
+
 transition
+
 "
 
 >
@@ -128,6 +181,8 @@ transition
 View Resume
 
 </a>
+
+
 
 
 
@@ -139,12 +194,23 @@ download
 
 className="
 px-8
+
 py-3
+
 rounded-full
+
 border
-font-semibold
-hover:scale-105
+
+border-[#6DD5C4]
+
+text-[#0f766e]
+
+font-bold
+
+hover:bg-[#DFF6F0]
+
 transition
+
 "
 
 >
@@ -155,18 +221,31 @@ Download CV
 
 
 
+
+
 <button
 
 onClick={()=>window.print()}
 
 className="
 px-8
+
 py-3
+
 rounded-full
+
 border
-font-semibold
-hover:scale-105
+
+border-slate-300
+
+font-bold
+
+text-slate-700
+
+hover:bg-slate-100
+
 transition
+
 "
 
 >
@@ -180,7 +259,12 @@ Print
 </div>
 
 
+
 </motion.div>
+
+
+</GlassCard>
+
 
 
 </Reveal>
@@ -191,6 +275,6 @@ Print
 
 </section>
 
-);
+)
 
 }

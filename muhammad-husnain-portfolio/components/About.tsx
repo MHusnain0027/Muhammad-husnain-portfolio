@@ -1,201 +1,274 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import Reveal from "./Reveal";
+import GlassCard from "./ui/GlassCard";
+import SectionTitle from "./ui/SectionTitle";
 
 
 const details = [
 
-{
-title:"Nationality",
-value:"Pakistani"
-},
+  {
+    title: "Nationality",
+    value: "Pakistani"
+  },
 
-{
-title:"Languages",
-value:"English, Urdu, Hindi"
-},
+  {
+    title: "Languages",
+    value: "English, Urdu, Hindi"
+  },
 
-{
-title:"Education",
-value:"Professional & Technical Training"
-},
+  {
+    title: "Education",
+    value: "Professional & Technical Training"
+  },
 
-{
-title:"Certification",
-value:"SIRA Certified Security Professional"
-}
+  {
+    title: "Certification",
+    value: "SIRA Certified Security Professional"
+  }
 
 ];
+
 
 
 export default function About(){
 
 
-return (
+  return (
 
-<section
-id="about"
-className="
-min-h-screen
-px-6
-py-24
-bg-white
-dark:bg-black
-"
->
+    <section
 
+      id="about"
 
-<div className="
-max-w-6xl
-mx-auto
-">
+      className="
+      px-6
+      py-24
+      "
+
+    >
 
 
-<Reveal>
+      <div
+
+        className="
+        max-w-6xl
+        mx-auto
+        "
+
+      >
 
 
-<motion.h2
+        <Reveal>
 
-initial={{
-opacity:0,
-x:-30
-}}
 
-whileInView={{
-opacity:1,
-x:0
-}}
+          <SectionTitle
 
-className="
-text-4xl
-md:text-5xl
-font-bold
-mb-8
-"
+            badge="ABOUT ME"
 
->
+            title="Security Professional With Technology Vision"
 
-About Me
+            description="
+            Security operations experience combined with AI,
+            automation and modern web development skills.
+            "
 
-</motion.h2>
+          />
 
 
 
-<p
-className="
-text-lg
-text-gray-600
-dark:text-gray-300
-leading-relaxed
-mb-12
-"
->
+          <div
 
-I am Muhammad Husnain, a professional Security System Operator
-specializing in CCTV monitoring, security operations, incident reporting
-and data management.
+            className="
+            grid
+            md:grid-cols-2
+            gap-10
+            items-center
+            "
 
-I have experience working in professional environments where safety,
-security and technology work together.
-
-</p>
+          >
 
 
 
-<div
-className="
-grid
-md:grid-cols-2
-gap-6
-"
->
+            {/* Introduction Card */}
+
+            <GlassCard
+
+              className="
+              p-8
+              md:p-10
+              "
+
+            >
 
 
-{
-details.map((item,index)=>(
+              <motion.p
+
+                initial={{
+                  opacity:0,
+                  y:20
+                }}
+
+                whileInView={{
+                  opacity:1,
+                  y:0
+                }}
+
+                viewport={{
+                  once:true
+                }}
+
+                className="
+                text-lg
+                text-slate-600
+                leading-relaxed
+                "
+
+              >
+
+                I am Muhammad Husnain, a professional Security System
+                Operator specializing in CCTV monitoring, control room
+                operations, security reporting and incident management.
 
 
-<motion.div
-
-key={item.title}
-
-initial={{
-opacity:0,
-y:40
-}}
-
-whileInView={{
-opacity:1,
-y:0
-}}
-
-transition={{
-delay:index*0.15
-}}
-
-whileHover={{
-scale:1.05
-}}
-
-className="
-p-6
-rounded-3xl
-bg-gray-100
-dark:bg-white/10
-border
-shadow-lg
-backdrop-blur
-"
-
->
+                <br />
+                <br />
 
 
-<h3
-className="
-text-xl
-font-bold
-mb-2
-"
->
-
-{item.title}
-
-</h3>
+                Alongside my security career, I have developed practical
+                skills in Web Development and modern technologies.
+                I work with HTML, CSS, JavaScript, React, Next.js and
+                modern UI frameworks to create responsive and
+                user-friendly web applications.
 
 
+                <br />
+                <br />
 
-<p
-className="
-text-gray-600
-dark:text-gray-300
-"
->
 
-{item.value}
+                My goal is to combine my security knowledge with
+                technology by exploring AI solutions, automation systems
+                and innovative digital platforms that improve efficiency,
+                safety and user experience.
 
-</p>
+
+              </motion.p>
+
+
+            </GlassCard>
 
 
 
-</motion.div>
 
 
-))
-}
+            {/* Details Cards */}
+
+            <div
+
+              className="
+              grid
+              sm:grid-cols-2
+              gap-6
+              "
+
+            >
 
 
-</div>
+              {
+                details.map((item,index)=>(
 
 
-</Reveal>
+                  <GlassCard
+
+                    key={item.title}
+
+                    className="
+                    p-6
+                    "
+
+                  >
 
 
-</div>
+                    <motion.div
+
+                      initial={{
+                        opacity:0,
+                        y:20
+                      }}
+
+                      whileInView={{
+                        opacity:1,
+                        y:0
+                      }}
+
+                      viewport={{
+                        once:true
+                      }}
+
+                      transition={{
+                        duration:.4,
+                        delay:index * .1
+                      }}
+
+                    >
 
 
-</section>
+                      <h3
 
-);
+                        className="
+                        text-xl
+                        font-bold
+                        text-slate-900
+                        "
+
+                      >
+
+                        {item.title}
+
+                      </h3>
+
+
+
+                      <p
+
+                        className="
+                        mt-3
+                        text-slate-600
+                        "
+
+                      >
+
+                        {item.value}
+
+                      </p>
+
+
+                    </motion.div>
+
+
+                  </GlassCard>
+
+
+                ))
+              }
+
+
+            </div>
+
+
+
+          </div>
+
+
+        </Reveal>
+
+
+      </div>
+
+
+    </section>
+
+  );
 
 }
