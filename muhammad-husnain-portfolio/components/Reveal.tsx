@@ -3,39 +3,127 @@
 import { motion } from "framer-motion";
 
 
+interface RevealProps {
+
+children: React.ReactNode;
+
+delay?: number;
+
+direction?: "up" | "left" | "right";
+
+}
+
+
+
 export default function Reveal({
-  children
-}:{
-  children: React.ReactNode;
-}) {
+
+children,
+
+delay = 0,
+
+direction = "up"
+
+}: RevealProps){
+
+
+
+const animations = {
+
+
+up: {
+
+hidden:{
+opacity:0,
+y:60,
+filter:"blur(10px)"
+},
+
+visible:{
+opacity:1,
+y:0,
+filter:"blur(0px)"
+}
+
+},
+
+
+left:{
+
+hidden:{
+opacity:0,
+x:-60,
+filter:"blur(10px)"
+},
+
+visible:{
+opacity:1,
+x:0,
+filter:"blur(0px)"
+}
+
+},
+
+
+right:{
+
+hidden:{
+opacity:0,
+x:60,
+filter:"blur(10px)"
+},
+
+visible:{
+opacity:1,
+x:0,
+filter:"blur(0px)"
+}
+
+}
+
+
+};
+
 
 
 return (
 
 <motion.div
 
-initial={{
-opacity:0,
-y:50
-}}
 
-whileInView={{
-opacity:1,
-y:0
-}}
+initial={
+animations[direction].hidden
+}
+
+
+whileInView={
+animations[direction].visible
+}
+
 
 viewport={{
+
 once:true,
-amount:0.2
+
+amount:0.15
+
 }}
 
+
 transition={{
-duration:0.7
+
+duration:0.8,
+
+delay,
+
+ease:[0.22,1,0.36,1]
+
 }}
+
 
 >
 
 {children}
+
 
 </motion.div>
 

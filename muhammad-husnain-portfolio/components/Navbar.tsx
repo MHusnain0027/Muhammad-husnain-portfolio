@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+
 import {
 Menu,
-X,
-Moon,
-Sun
+X
 } from "lucide-react";
 
+import { motion, AnimatePresence } from "framer-motion";
 
-const links=[
+
+
+const links = [
 
 {
 name:"Home",
@@ -61,17 +63,39 @@ export default function Navbar(){
 
 const [open,setOpen]=useState(false);
 
-const [dark,setDark]=useState(false);
+const [scrolled,setScrolled]=useState(false);
 
 
 
-function toggleTheme(){
+useEffect(()=>{
 
-document.documentElement.classList.toggle("dark");
 
-setDark(!dark);
+const handleScroll=()=>{
 
-}
+setScrolled(window.scrollY > 30);
+
+};
+
+
+window.addEventListener(
+"scroll",
+handleScroll
+);
+
+
+return()=>{
+
+window.removeEventListener(
+"scroll",
+handleScroll
+);
+
+};
+
+
+},[]);
+
+
 
 
 
@@ -93,33 +117,74 @@ px-6
 
 <div
 
-className="
+className={`
+
 container
-glass
+
 rounded-full
+
 py-4
+
 px-6
+
 flex
+
 items-center
+
 justify-between
-"
+
+
+transition-all
+
+duration-500
+
+
+${
+
+scrolled
+
+?
+
+"bg-[#050816]/80 backdrop-blur-xl shadow-[0_0_40px_rgba(0,229,176,.15)]"
+
+:
+
+"glass"
+
+}
+
+
+border
+
+border-white/10
+
+
+`}
 
 >
 
 
-<h1
+
+<Link
+
+href="#home"
 
 className="
 font-black
-text-xl
-text-[#2D9C8C]
+text-2xl
+tracking-wider
+text-[var(--primary)]
+drop-shadow-[0_0_20px_rgba(0,229,176,.8)]
+hover:scale-110
+transition
 "
 
 >
 
 MH
 
-</h1>
+</Link>
+
 
 
 
@@ -131,7 +196,7 @@ className="
 hidden
 lg:flex
 items-center
-gap-6
+gap-7
 "
 
 >
@@ -149,50 +214,65 @@ key={link.name}
 href={link.href}
 
 className="
+
+relative
+
 text-sm
+
 font-semibold
-hover:text-[#2D9C8C]
-transition
+
+text-[var(--text-muted)]
+
+hover:text-[var(--primary)]
+
+transition-all
+
+duration-300
+
+group
+
 "
 
 >
 
+
 {link.name}
+
+
+
+<span
+
+className="
+
+absolute
+
+left-0
+
+bottom-[-6px]
+
+w-0
+
+h-[2px]
+
+bg-[var(--primary)]
+
+transition-all
+
+duration-300
+
+group-hover:w-full
+
+"
+
+/>
+
 
 </Link>
 
 
 ))
 
-
 }
-
-
-
-<button
-
-onClick={toggleTheme}
-
-className="
-ml-4
-"
-
->
-
-{
-
-dark ?
-
-<Sun size={20}/>
-
-:
-
-<Moon size={20}/>
-
-}
-
-
-</button>
 
 
 </div>
@@ -201,30 +281,43 @@ dark ?
 
 
 
-<button
 
-className="
-lg:hidden
-"
+
+<button
 
 onClick={()=>setOpen(!open)}
 
+className="
+
+lg:hidden
+
+text-[var(--primary)]
+
+hover:scale-110
+
+transition
+
+"
+
 >
 
 {
 
-open ?
+open
 
-<X/>
+?
+
+<X size={28}/>
 
 :
 
-<Menu/>
+<Menu size={28}/>
 
 }
 
-
 </button>
+
+
 
 
 
@@ -233,24 +326,85 @@ open ?
 
 
 
+
+
+
+<AnimatePresence>
 
 
 {
 
 open &&
 
-<div
+
+<motion.div
+
+
+initial={{
+
+opacity:0,
+
+y:-20,
+
+scale:.95
+
+}}
+
+
+animate={{
+
+opacity:1,
+
+y:0,
+
+scale:1
+
+}}
+
+
+exit={{
+
+opacity:0,
+
+y:-20,
+
+scale:.95
+
+}}
+
+
+transition={{
+
+duration:.25
+
+}}
+
+
 
 className="
+
 lg:hidden
+
 container
+
 glass
-mt-3
+
+mt-4
+
 rounded-3xl
+
 p-6
+
 flex
+
 flex-col
-gap-4
+
+gap-5
+
+border
+
+border-white/10
+
 "
 
 >
@@ -258,19 +412,56 @@ gap-4
 
 {
 
-links.map((link)=>(
+links.map((link,index)=>(
+
+
+<motion.div
+
+key={link.name}
+
+initial={{
+
+opacity:0,
+
+x:-20
+
+}}
+
+animate={{
+
+opacity:1,
+
+x:0
+
+}}
+
+transition={{
+
+delay:index*.05
+
+}}
+
+>
 
 
 <Link
 
-key={link.name}
 
 href={link.href}
 
 onClick={()=>setOpen(false)}
 
+
 className="
+
+text-[var(--text-muted)]
+
+hover:text-[var(--primary)]
+
 font-semibold
+
+transition
+
 "
 
 >
@@ -280,6 +471,9 @@ font-semibold
 </Link>
 
 
+</motion.div>
+
+
 ))
 
 
@@ -287,15 +481,17 @@ font-semibold
 
 
 
-</div>
+</motion.div>
 
 
 }
 
 
+</AnimatePresence>
+
+
 
 </nav>
-
 
 );
 

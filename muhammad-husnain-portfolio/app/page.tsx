@@ -1,61 +1,35 @@
-import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
-import About from "@/components/About";
-import Experience from "@/components/Experience";
-import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
-import Certificates from "@/components/Certificates";
-import Gallery from "@/components/Gallery";
-import Resume from "@/components/Resume";
-import Contact from "@/components/Contact";
-import Footer from "@/components/footer";
-
+import Hero from "@/components/hero/Hero";
+import About from "@/components/about/About";
+import Experience from "@/components/experience/Experience";
+import Skills from "@/components/skills/Skills";
+import Projects from "@/components/projects/Projects";
+import Certificates from "@/components/certificates/Certificates";
+import Gallery from "@/components/gallery/Gallery";
 
 
 export default function Home() {
 
 
-return (
+  return (
 
-<main>
+    <main>
 
+      <Hero />
 
-<Hero />
+      <About />
 
+      <Experience />
 
-<Stats />
+      <Skills />
 
+      <Projects />
 
-<About />
+      <Certificates />
 
+      <Gallery />
 
-<Experience />
+    </main>
 
-
-<Skills />
-
-
-<Projects />
-
-
-<Certificates />
-
-
-<Gallery />
-
-
-<Resume />
-
-
-<Contact />
-
-
-<Footer />
-
-
-</main>
-
-);
-
+  );
 
 }

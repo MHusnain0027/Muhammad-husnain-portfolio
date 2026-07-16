@@ -1,78 +1,72 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import React from "react";
 
 
 interface GlassCardProps {
 
-  children: ReactNode;
+children: React.ReactNode;
 
-  className?: string;
+className?: string;
 
 }
 
 
 export default function GlassCard({
 
-  children,
+children,
 
-  className = "",
+className=""
 
-}: GlassCardProps) {
+}: GlassCardProps){
 
 
-  return (
+return (
 
-    <motion.div
+<div
 
-      initial={{
-        opacity:0,
-        y:20
-      }}
+className={`
+glass
+group
+relative
+overflow-hidden
+transition-all
+duration-500
+hover:-translate-y-2
+hover:border-[var(--primary)]
+hover:shadow-[0_0_40px_rgba(0,229,176,0.15)]
+${className}
+`}
 
-      whileInView={{
-        opacity:1,
-        y:0
-      }}
+>
 
-      viewport={{
-        once:true
-      }}
 
-      transition={{
-        duration:0.5
-      }}
+<div
 
-      whileHover={{
-        y:-8
-      }}
+className="
+absolute
+inset-0
+opacity-0
+group-hover:opacity-100
+transition
+duration-500
+bg-gradient-to-br
+from-[rgba(0,229,176,0.08)]
+via-transparent
+to-[rgba(56,189,248,0.08)]
+pointer-events-none
+"
 
-      className={`
-      
-      rounded-3xl
+/>
 
-      border
-      border-[#6DD5C4]/30
 
-      bg-white/60
+<div className="relative z-10">
 
-      backdrop-blur-xl
+{children}
 
-      shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+</div>
 
-      transition-all
 
-      ${className}
+</div>
 
-      `}
-
-    >
-
-      {children}
-
-    </motion.div>
-
-  );
+);
 
 }

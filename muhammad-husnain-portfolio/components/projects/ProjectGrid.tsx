@@ -1,0 +1,50 @@
+import ProjectCard from "./ProjectCard";
+
+import projects from "@/components/data/projects";
+
+
+export default function ProjectGrid(){
+
+
+return (
+
+<div
+
+className="
+grid
+
+md:grid-cols-2
+
+gap-8
+
+"
+
+>
+
+
+{
+
+projects.map((project)=>(
+
+
+<ProjectCard
+
+key={project.title}
+
+{...project}
+
+/>
+
+
+))
+
+
+}
+
+
+
+</div>
+
+);
+
+}

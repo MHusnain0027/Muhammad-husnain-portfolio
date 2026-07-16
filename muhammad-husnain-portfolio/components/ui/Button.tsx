@@ -1,90 +1,130 @@
-"use client";
-
-import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import Link from "next/link";
 
 
 interface ButtonProps {
 
-  children: ReactNode;
+children: React.ReactNode;
 
-  variant?: "primary" | "secondary";
+href?: string;
 
-  className?: string;
+variant?: "primary" | "secondary";
+
+className?: string;
 
 }
 
 
 export default function Button({
 
-  children,
+children,
 
-  variant = "primary",
+href,
 
-  className = "",
+variant="primary",
 
-}: ButtonProps) {
+className=""
 
-
-  const styles = {
-
-    primary:
-    `
-    bg-[#6DD5C4]
-    text-[#083344]
-    hover:bg-[#52c7b3]
-    `,
+}:ButtonProps){
 
 
-    secondary:
-    `
-    bg-white/60
-    text-slate-800
-    border
-    border-[#6DD5C4]/30
-    hover:bg-white
-    `
+const styles = `
 
-  };
+inline-flex
+items-center
+justify-center
+gap-2
+
+px-7
+py-3
+
+rounded-full
+
+font-bold
+
+transition-all
+duration-300
+
+hover:-translate-y-1
+
+${
+
+variant==="primary"
+
+?
+
+`
+bg-[var(--primary)]
+text-[#022c22]
+
+shadow-[0_0_25px_rgba(0,229,176,.35)]
+
+hover:shadow-[0_0_45px_rgba(0,229,176,.6)]
+
+`
+
+:
+
+`
+
+border
+border-white/20
+
+text-[var(--foreground)]
+
+bg-white/5
+
+backdrop-blur
+
+hover:border-[var(--primary)]
+
+hover:text-[var(--primary)]
+
+`
+
+}
+
+${className}
+
+`;
 
 
-  return (
 
-    <motion.button
+if(href){
 
-      whileHover={{
-        scale:1.05
-      }}
+return (
 
-      whileTap={{
-        scale:0.95
-      }}
+<Link
 
-      className={`
-      
-      px-8
-      py-3
+href={href}
 
-      rounded-full
+className={styles}
 
-      font-semibold
+>
 
-      transition
+{children}
 
-      backdrop-blur-xl
+</Link>
 
-      ${styles[variant]}
+);
 
-      ${className}
+}
 
-      `}
 
-    >
 
-      {children}
+return (
 
-    </motion.button>
+<button
 
-  );
+className={styles}
+
+>
+
+{children}
+
+</button>
+
+);
+
 
 }

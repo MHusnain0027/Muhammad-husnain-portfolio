@@ -8,7 +8,6 @@ Phone,
 MapPin
 } from "lucide-react";
 
-
 import {
 FaLinkedin,
 FaGithub
@@ -16,45 +15,51 @@ FaGithub
 
 import Reveal from "./Reveal";
 
+import profile from "@/data/profile";
+import social from "@/data/social";
+
+
+
+export default function Contact(){
 
 
 const contactInfo = [
 
 {
 title:"Email",
-value:"your-email@example.com",
+value:profile.email,
 icon:<Mail size={26}/>,
-link:"mailto:your-email@example.com"
+link:`mailto:${profile.email}`
 },
 
 
 {
 title:"WhatsApp",
-value:"+971 XX XXX XXXX",
+value:profile.phone,
 icon:<Phone size={26}/>,
-link:"#"
+link:social.find(item=>item.name==="WhatsApp")?.url || "#"
 },
 
 
 {
 title:"LinkedIn",
-value:"linkedin.com/in/your-profile",
+value:"LinkedIn Profile",
 icon:<FaLinkedin size={26}/>,
-link:"#"
+link:social.find(item=>item.name==="LinkedIn")?.url || "#"
 },
 
 
 {
 title:"GitHub",
-value:"github.com/your-profile",
+value:"GitHub Profile",
 icon:<FaGithub size={26}/>,
-link:"#"
+link:social.find(item=>item.name==="GitHub")?.url || "#"
 },
 
 
 {
 title:"Location",
-value:"Dubai, UAE",
+value:profile.location,
 icon:<MapPin size={26}/>,
 link:"#"
 }
@@ -62,11 +67,6 @@ link:"#"
 
 ];
 
-
-
-
-
-export default function Contact(){
 
 
 return (
@@ -138,41 +138,29 @@ key={item.title}
 
 
 initial={{
-
 opacity:0,
-
 y:30
-
 }}
 
 
 whileInView={{
-
 opacity:1,
-
 y:0
-
 }}
 
 
 viewport={{
-
 once:true
-
 }}
 
 
 transition={{
-
 delay:index*.1
-
 }}
 
 
 whileHover={{
-
 y:-8
-
 }}
 
 
@@ -210,7 +198,6 @@ mb-5
 
 
 
-
 <h3
 
 className="
@@ -223,7 +210,6 @@ font-bold
 {item.title}
 
 </h3>
-
 
 
 
